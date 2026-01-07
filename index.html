@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>환영합니다!</title>
+    <title>크레용 하우스</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="background-overlay"></div>
 
     <div class="container">
-        <div class="house-icon">
+        <div class="crayon-house">
+            <div class="chimney"></div>
             <div class="roof"></div>
             <div class="base">
-                <input type="text" id="userName" placeholder="이름" autocomplete="off">
+                <div class="window"></div>
+                <input type="text" id="userName" placeholder="이름" oninput="updateTitle(this.value)" autocomplete="off">
             </div>
         </div>
-        <p class="welcome-text">~의 집!</p>
-        <button onclick="saveName()">입장하기</button>
+        
+        <h1 class="welcome-text"><span id="display-name">___</span>의 집!</h1>
+        
+        <button class="entry-btn" onclick="saveAndGo()">입장하기</button>
     </div>
 
     <script>
-        function saveName() {
+        // 입력창에 타이핑할 때마다 문구가 바뀜
+        function updateTitle(val) {
+            const display = document.getElementById('display-name');
+            display.innerText = val || "___";
+        }
+
+        function saveAndGo() {
             const name = document.getElementById('userName').value;
             if (name) {
-                // 이름을 브라우저에 저장
                 localStorage.setItem('visitorName', name);
-                alert(name + '님, 환영합니다!');
-                // 다음 페이지로 이동하려면 아래 주석을 해제하세요
-                // window.location.href = 'main.html'; 
+                alert(name + '님의 집으로 입장합니다!');
+                // window.location.href = 'next-page.html'; // 다음 페이지 연결 시 주석 해제
             } else {
                 alert('이름을 입력해주세요!');
             }
