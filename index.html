@@ -3,42 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>크레용 하우스</title>
+    <title>나의 크레용 하우스</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="background-overlay"></div>
 
     <div class="container">
-        <div class="crayon-house">
-            <div class="chimney"></div>
-            <div class="roof"></div>
-            <div class="base">
-                <div class="window"></div>
-                <input type="text" id="userName" placeholder="이름" oninput="updateTitle(this.value)" autocomplete="off">
-            </div>
+        <div class="house-wrapper">
+            <svg viewBox="0 0 500 500" class="crayon-svg">
+                <path d="M50,200 L250,50 L450,200 Z" class="path-roof" />
+                <rect x="330" y="80" width="40" height="70" class="path-chimney" />
+                <path d="M80,200 L420,200 L420,450 L80,450 Z" class="path-body" />
+                <rect x="210" y="100" width="80" height="70" class="path-window" />
+                <rect x="150" y="280" width="200" height="100" class="path-sign" />
+                
+                <text x="250" y="335" id="svg-name" text-anchor="middle">___</text>
+                <text x="250" y="370" id="svg-suffix" text-anchor="middle">의 집!</text>
+            </svg>
+
+            <input type="text" id="userName" placeholder="이름 입력" oninput="updateName(this.value)" maxlength="8">
         </div>
-        
-        <h1 class="welcome-text"><span id="display-name">___</span>의 집!</h1>
-        
-        <button class="entry-btn" onclick="saveAndGo()">입장하기</button>
+
+        <button class="entry-btn" onclick="enterHouse()">입장하기</button>
     </div>
 
     <script>
-        // 입력창에 타이핑할 때마다 문구가 바뀜
-        function updateTitle(val) {
-            const display = document.getElementById('display-name');
-            display.innerText = val || "___";
+        function updateName(val) {
+            const nameDisplay = document.getElementById('svg-name');
+            nameDisplay.textContent = val || "___";
         }
 
-        function saveAndGo() {
+        function enterHouse() {
             const name = document.getElementById('userName').value;
             if (name) {
                 localStorage.setItem('visitorName', name);
-                alert(name + '님의 집으로 입장합니다!');
-                // window.location.href = 'next-page.html'; // 다음 페이지 연결 시 주석 해제
+                alert(name + "님, 환영합니다!");
+                // window.location.href = 'next.html';
             } else {
-                alert('이름을 입력해주세요!');
+                alert("이름을 입력해 주세요!");
             }
         }
     </script>
