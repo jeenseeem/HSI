@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>나의 첫 웹사이트</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환영합니다!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>반가워요! 제 첫 깃허브 페이지입니다.</h1>
-    <p>성공적으로 사이트가 만들어졌네요!</p>
+    <div class="background-overlay"></div>
+
+    <div class="container">
+        <div class="house-icon">
+            <div class="roof"></div>
+            <div class="base">
+                <input type="text" id="userName" placeholder="이름" autocomplete="off">
+            </div>
+        </div>
+        <p class="welcome-text">~의 집!</p>
+        <button onclick="saveName()">입장하기</button>
+    </div>
+
+    <script>
+        function saveName() {
+            const name = document.getElementById('userName').value;
+            if (name) {
+                // 이름을 브라우저에 저장
+                localStorage.setItem('visitorName', name);
+                alert(name + '님, 환영합니다!');
+                // 다음 페이지로 이동하려면 아래 주석을 해제하세요
+                // window.location.href = 'main.html'; 
+            } else {
+                alert('이름을 입력해주세요!');
+            }
+        }
+    </script>
 </body>
 </html>
