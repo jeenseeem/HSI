@@ -1,46 +1,13 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>크레용 하우스</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="background-overlay"></div>
-
-    <div class="container">
-        <div class="house">
-            <div class="chimney"></div>
-            <div class="roof"></div>
-            <div class="walls">
-                <div class="window"></div>
-                <div class="input-area">
-                    <input type="text" id="userName" placeholder="이름" oninput="updateTitle(this.value)" autocomplete="off">
-                </div>
-            </div>
-        </div>
-
-        <h1 class="welcome-text"><span id="display-name">___</span>의 집!</h1>
-        
-        <button class="entry-btn" onclick="saveAndGo()">입장하기</button>
-    </div>
-
-    <script>
-        function updateTitle(val) {
-            document.getElementById('display-name').innerText = val || "___";
-        }
-
-        function saveAndGo() {
-            const name = document.getElementById('userName').value;
-            if (name) {
-                localStorage.setItem('visitorName', name);
-                alert(name + '님 반갑습니다!');
-                // window.location.href = 'next.html';
-            } else {
-                alert('이름을 입력해주세요!');
-            }
-        }
-    </script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
+
